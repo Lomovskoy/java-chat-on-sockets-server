@@ -24,7 +24,7 @@ public class RunServer implements RunServerInterface {
     private volatile Boolean working = true;
 
     /** Создаём обьект сервера */
-    //Server server = new Server();
+    Server server = new Server();
 
     /** Имя потока для работы сервера */
     String nameThread = "work";
@@ -68,16 +68,16 @@ public class RunServer implements RunServerInterface {
     private void work(ServerSocket serverSocket) throws IOException {
 
         //Создаём новый поток для выполнения, передаём туда аргумент роботы
-        //Thread myWork = new Thread(server, nameThread);
+        Thread myWork = new Thread(server, nameThread);
 
         //Запускаем в новом потоке сервер
-        //myWork.start();
+        myWork.start();
 
         //Запускаем цикл
         while (working) {
 
             //Создаём новое соединение для клиена
-            //new ClientConnection(serverSocket.accept(), server);
+            new ClientConnection(serverSocket.accept(), server);
         }
     }
 
