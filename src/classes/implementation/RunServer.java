@@ -24,10 +24,10 @@ public class RunServer implements RunServerInterface {
     private volatile Boolean working = true;
 
     /** Создаём обьект сервера */
-    Server server = new Server();
+    private Server server = new Server();
 
     /** Имя потока для работы сервера */
-    String nameThread = "work";
+    private String nameThread = "work";
 
     /**
      * Метод запуска работы сервера:
@@ -55,6 +55,8 @@ public class RunServer implements RunServerInterface {
 
         ServerSocket serverSocket = new ServerSocket(port);                 //Создаём сокет для работы сервера
         log.log(Level.INFO, "Server слушает порт: {0}", port);        //Пишем в лог информацию от сервера
+
+        work(serverSocket);
 
     }
 
